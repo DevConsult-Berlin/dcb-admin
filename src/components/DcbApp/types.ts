@@ -5,4 +5,5 @@ export interface AppFeature {
     list?: JSX.Element;
     view?: JSX.Element;
     dialogs?: JSX.Element[];
+
 }

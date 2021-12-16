@@ -1,3 +1,4 @@
-import { DcbApp } from "./components/DcbApp";
+import { DcbApp } from "./components/DcbApp/DcbApp";
+import { AppFeature } from "./components/DcbApp/types";
 
-export {DcbApp}
+export {DcbApp, AppFeature}

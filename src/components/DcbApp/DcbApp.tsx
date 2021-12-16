@@ -14,6 +14,22 @@ export const DcbApp: FC<DcbAppProps> = ({features, logo}) => {
             {features.map((f) => f.dialogs)}
             <Routes>
                 <Route path="/" element={<MainFrame logo={logo} features={features}/>}>
+                    {features.map((f) => (
+                        f.list
+                            ? (
+                                <Route key={f.path} path={f.path}>
+                                    <Route index element={f.list}/>
+                                    <Route path=":id" element={f.view}/>
+                                </Route>
+                            )
+                            : (
+                                <Route
+                                    key={f.path}
+                                    path={f.path}
+                                    element={f.view}
+                                />
+                            )
+                    ))}
                 </Route>
             </Routes>
         </BrowserRouter>

@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import {drawerWidth} from "./utils";
 import {ListLink} from "./ListLink";
-import {AppFeature} from "../DcbApp/types";
+import {AppFeature} from "../dcbApp/types";
 
 export interface AppDrawerProps {
     features: AppFeature[];

@@ -3,7 +3,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {AppFeature} from "./types";
 import MainFrame from "../mainFrame/MainFrame";
 
-interface DcbAppProps {
+export interface DcbAppProps {
     logo: JSX.Element;
     features: AppFeature[];
 }

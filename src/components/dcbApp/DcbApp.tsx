@@ -23,13 +23,13 @@ export const DcbApp: FC<DcbAppProps> = ({features, logo}) => {
                             ? (
                                 <Route key={f.path} path={f.path}>
                                     <Route index element={f.list}/>
-                                    <Route path=":id" element={f.view}/>
+                                    <Route path=":id/*" element={f.view}/>
                                 </Route>
                             )
                             : (
                                 <Route
                                     key={f.path}
-                                    path={f.path}
+                                    path={`${f.path}/*`}
                                     element={f.view}
                                 />
                             )

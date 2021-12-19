@@ -1,5 +1,6 @@
 import {DcbApp, DcbAppProps} from "./components/dcbApp/DcbApp";
 import {AppFeature} from "./components/dcbApp/types";
+import { AppDate, formatDate } from "./components/formatUtils/dateFormatUtils";
 import {FormikDialogForm, FormikDialogFormProps} from "./components/formikDialogForm/components/FormikDialogForm";
 import {useDialogFormState, useNavigateDialogForm} from "./components/formikDialogForm/dialogForm.hook";
 import {DialogMode} from "./components/formikDialogForm/types";
@@ -22,5 +23,8 @@ export {
 
     RouterTabs,
     RouterTabsProps,
-    RouterTabProps
+    RouterTabProps,
+
+    AppDate,
+    formatDate
 }

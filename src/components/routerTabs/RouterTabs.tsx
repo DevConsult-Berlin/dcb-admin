@@ -10,6 +10,7 @@ export interface RouterTabProps {
     path: string;
     label: string;
     content: JSX.Element;
+    icon?: React.ReactElement;
 }
 
 export interface RouterTabsProps {
@@ -31,6 +32,7 @@ export function RouterTabs(props: RouterTabsProps) {
                     <Tab
                         key={"tab-" + t.path}
                         label={t.label}
+                        icon={t.icon}
                         value={`${basePathName}/${t.path}`}
                         to={t.path}
                         component={Link}

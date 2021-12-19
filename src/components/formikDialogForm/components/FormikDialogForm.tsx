@@ -1,6 +1,6 @@
 import React from "react";
 import {Form, Formik, FormikProps} from "formik";
-import {useDialogState} from "../dialog.hookts";
+import {useDialogFormState} from "../dialogForm.hook";
 import {Dialog, DialogContent, DialogTitle, LinearProgress} from "@mui/material";
 import {DialogActions} from "./DialogActions";
 import {DialogMode} from "../types";
@@ -18,7 +18,7 @@ export interface FormikDialogFormProps<T, C, U> {
 
 export function FormikDialogForm<T, C, U>(props: FormikDialogFormProps<T, C, U>) {
 
-    const {open, closeDialog, initialValues, mode} = useDialogState<U>(props.dialogId);
+    const {open, closeDialog, initialValues, mode} = useDialogFormState<U>(props.dialogId);
 
     const handleSubmit = (dto: C | U) =>
         props.onSubmit(dto, mode)

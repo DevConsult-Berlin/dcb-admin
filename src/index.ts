@@ -1,7 +1,7 @@
 import {DcbApp, DcbAppProps} from "./components/dcbApp/DcbApp";
 import {AppFeature} from "./components/dcbApp/types";
 import {FormikDialogForm, FormikDialogFormProps} from "./components/formikDialogForm/components/FormikDialogForm";
-import {useDialogState, useNavigateDialog} from "./components/formikDialogForm/dialog.hookts";
+import {useDialogFormState, useNavigateDialogForm} from "./components/formikDialogForm/dialogForm.hook";
 import {DialogMode} from "./components/formikDialogForm/types";
 import { RouterTabProps, RouterTabs, RouterTabsProps } from "./components/routerTabs/RouterTabs";
 import { TextDisplay, TextDisplayProps } from "./components/TextDisplay/TextDisplay";
@@ -11,8 +11,8 @@ export {
     DcbAppProps,
     AppFeature,
 
-    useNavigateDialog,
-    useDialogState,
+    useNavigateDialogForm,
+    useDialogFormState,
     DialogMode,
     FormikDialogForm,
     FormikDialogFormProps,

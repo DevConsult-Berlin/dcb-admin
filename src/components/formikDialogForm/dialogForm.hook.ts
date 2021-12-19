@@ -8,7 +8,7 @@ import {DialogMode} from "./types";
  * @param initialValues values to be set to history's state for usage in a DialogForm as initial values if mode is edit
  * @return function to navigate to the dialog
  */
-export function useNavigateDialog<T>(dialogId: string, mode: DialogMode, initialValues?: T) {
+export function useNavigateDialogForm<T>(dialogId: string, mode: DialogMode, initialValues?: T) {
     const [,setParams] = useSearchParams();
 
     return () => setParams(
@@ -28,7 +28,7 @@ export function useNavigateDialog<T>(dialogId: string, mode: DialogMode, initial
  *     initialValues: initial values for forms
  * }
  */
-export function useDialogState<T>(dialogId: string) {
+export function useDialogFormState<T>(dialogId: string) {
     const [params, setParams] = useSearchParams();
     const location = useLocation();
 

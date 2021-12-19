@@ -13,10 +13,10 @@ export const DcbApp: FC<DcbAppProps> = ({features, logo}) => {
         <BrowserRouter>
             {features.map((f) => (
                 <React.Fragment key={`feature-dialogs-${f.label}`}>
-                    {f.dialogs?.map((_, dialogIndex) => (
-                        <div key={`feature-dialog-${f.label}-${dialogIndex}`}>
-                            {f.dialogs}
-                        </div>
+                    {f.dialogs?.map((dialog, dialogIndex) => (
+                        <React.Fragment key={`feature-dialog-${f.label}-${dialogIndex}`}>
+                            {dialog}
+                        </React.Fragment>
                     ))}
                 </React.Fragment>
             ))}

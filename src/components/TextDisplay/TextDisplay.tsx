@@ -10,7 +10,7 @@ export interface TextDisplayProps {
 
 export const TextDisplay: FC<TextDisplayProps> = ({label, value}) => (
     <Typography variant="caption" color="text.secondary">
-        {label && `${label}:`}:
+        {label && `${label}:`}
         <Typography color="text.primary">{value}</Typography>
     </Typography>
 );

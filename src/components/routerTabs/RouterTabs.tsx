@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import {Link, Route, Routes} from 'react-router-dom';
+import {Link, Route, Routes, useResolvedPath} from 'react-router-dom';
 import {useRouteMatch} from "./routerTabs.hook";
 
 export interface RouterTabProps {
@@ -13,15 +13,16 @@ export interface RouterTabProps {
 }
 
 export interface RouterTabsProps {
-    basePath: string;
     tabs: RouterTabProps[]
 }
 
 export function RouterTabs(props: RouterTabsProps) {
 
-    const routeMatch = useRouteMatch(props.tabs.map((t) => props.basePath.concat(t.path)));
+    const {pathname: basePathName} = useResolvedPath("");
 
-    const currentTab = routeMatch?.pattern?.path ?? props.basePath.concat(props.tabs[0].path);
+    const routeMatch = useRouteMatch(props.tabs.map((t) => `${basePathName}/${t.path}`));
+
+    const currentTab = routeMatch?.pattern?.path ?? `${basePathName}/${props.tabs[0].path}`;
 
     return (
         <React.Fragment>
@@ -30,7 +31,7 @@ export function RouterTabs(props: RouterTabsProps) {
                     <Tab
                         key={"tab-" + t.path}
                         label={t.label}
-                        value={props.basePath.concat(t.path)}
+                        value={`${basePathName}/${t.path}`}
                         to={t.path}
                         component={Link}
                     />

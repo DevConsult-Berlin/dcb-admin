@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import {Link, Route, Routes, useResolvedPath} from 'react-router-dom';
@@ -27,7 +26,7 @@ export function RouterTabs(props: RouterTabsProps) {
 
     return (
         <React.Fragment>
-            <Tabs value={currentTab}>
+            <Tabs value={currentTab} sx={{mb: 3}}>
                 {props.tabs.map((t) => (
                     <Tab
                         key={"tab-" + t.path}
@@ -39,20 +38,18 @@ export function RouterTabs(props: RouterTabsProps) {
                     />
                 ))}
             </Tabs>
-            <Box>
-                <Routes>
-                    {props.tabs.map((t) => (
-                        t.index
-                            ? (
-                                <React.Fragment key={"route-fragment-" + t.path}>
-                                    <Route key={"route-index"} index element={t.content}/>
-                                    <Route key={"route-" + t.path} path={t.path} element={t.content}/>
-                                </React.Fragment>
-                            )
-                            : <Route key={"route-" + t.path} path={t.path} element={t.content}/>
-                    ))}
-                </Routes>
-            </Box>
+            <Routes>
+                {props.tabs.map((t) => (
+                    t.index
+                        ? (
+                            <React.Fragment key={"route-fragment-" + t.path}>
+                                <Route key={"route-index"} index element={t.content}/>
+                                <Route key={"route-" + t.path} path={t.path} element={t.content}/>
+                            </React.Fragment>
+                        )
+                        : <Route key={"route-" + t.path} path={t.path} element={t.content}/>
+                ))}
+            </Routes>
         </React.Fragment>
     );
 }

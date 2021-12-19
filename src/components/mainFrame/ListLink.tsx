@@ -13,7 +13,7 @@ interface ListLinkProps {
 
 export const ListLink: FC<ListLinkProps> = ({ label, icon, linkProps}) => {
     const resolved = useResolvedPath(linkProps.to);
-    const match = useMatch({ path: resolved.pathname, end: true });
+    const match = useMatch(resolved.pathname);
 
     return (
         <ListItem selected={Boolean(match)} component={RouterLink} to={linkProps.to}>

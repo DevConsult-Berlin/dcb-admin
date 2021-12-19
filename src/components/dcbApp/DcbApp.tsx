@@ -11,11 +11,15 @@ export interface DcbAppProps {
 export const DcbApp: FC<DcbAppProps> = ({features, logo}) => {
     return (
         <BrowserRouter>
-            {features.map((f) =>
-                <div key={`${f.path}-dialogs`}>
-                    {f.dialogs}
-                </div>
-            )}
+            {features.map((f) => (
+                <React.Fragment key={`feature-dialogs-${f.label}`}>
+                    {f.dialogs?.map((_, dialogIndex) => (
+                        <div key={`feature-dialog-${f.label}-${dialogIndex}`}>
+                            {f.dialogs}
+                        </div>
+                    ))}
+                </React.Fragment>
+            ))}
             <Routes>
                 <Route path="/" element={<MainFrame logo={logo} features={features}/>}>
                     {features.map((f) =>

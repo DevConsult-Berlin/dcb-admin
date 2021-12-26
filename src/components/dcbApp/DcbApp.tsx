@@ -2,13 +2,23 @@ import React, {FC} from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {AppFeature} from "./types";
 import MainFrame from "../mainFrame/MainFrame";
+import {RequireAuth} from "./RequreAuth";
 
 export interface DcbAppProps {
     logo: JSX.Element;
     features: AppFeature[];
+    loggedIn?: boolean;
+    loginComponent?: JSX.Element;
+    passwordResetComponent?: JSX.Element;
 }
 
-export const DcbApp: FC<DcbAppProps> = ({features, logo}) => {
+export const DcbApp: FC<DcbAppProps> = ({
+                                            features,
+                                            logo,
+                                            loggedIn,
+                                            loginComponent,
+                                            passwordResetComponent
+                                        }) => {
     return (
         <BrowserRouter>
             {features.map((f) => (
@@ -21,7 +31,18 @@ export const DcbApp: FC<DcbAppProps> = ({features, logo}) => {
                 </React.Fragment>
             ))}
             <Routes>
-                <Route path="/" element={<MainFrame logo={logo} features={features}/>}>
+                <Route path="/login" element={loginComponent}/>
+                <Route path="/password-reset" element={passwordResetComponent}/>
+                <Route path="/" element={
+                    typeof loggedIn === "boolean"
+                        ? (
+                            <RequireAuth loggedIn={loggedIn}>
+                                <MainFrame logo={logo} features={features}/>
+                            </RequireAuth>
+                        )
+                        : <MainFrame logo={logo} features={features}/>
+
+                }>
                     {features.map((f) =>
                         f.list
                             ? (
